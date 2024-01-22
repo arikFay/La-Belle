@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules/
+ios/Pods/
+android/.gradle/
+android/app/build/
+
+# Logs
+*.log
+
+# Build files
+*.apk
+*.aab
+*.ap_
+*.ipa
+
+# Xcode
+.DS_Store
+.idea/
+*.xcuserdatad/
+*.xcworkspace/
+xcuserdata/
