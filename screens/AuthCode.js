@@ -1,11 +1,14 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Image, TextInput} from "react-native";
+import { useDispatch, useSelector } from 'react-redux';
+import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity} from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { FontSize, Border, FontFamily, Color } from "../GlobalStyles";
+import { fetchUserData } from '../slices/authSlice';
 
 const AuthCode = () => {
-    const [text, onChangeText] = React.useState('');
+    const dispatch = useDispatch();
     const [number, onChangeNumber] = React.useState('');
+
   return (
     <LinearGradient
       style={styles.authCode}
@@ -17,8 +20,12 @@ const AuthCode = () => {
       <Text style={[styles.text, styles.textTypo]}>ברוך/ה הבא/ה!</Text>
       <Text style={styles.text1}>נא להזין מס’ נייד לצורך הזדהות</Text>
       <View style={[styles.btn, styles.btnLayout]}>
-        <View style={[styles.btnChild, styles.childShadowBox]} />
+        <TouchableOpacity 
+        style={[styles.btnChild, styles.childShadowBox]} 
+        onPress={() => dispatch(fetchUserData(number))}
+        >
         <Text style={[styles.text2, styles.textPosition]}>היכנס/י</Text>
+        </TouchableOpacity>
       </View>
       <View style={[styles.field, styles.fieldLayout]}>
         <View style={[styles.fieldChild, styles.fieldLayout]} />
@@ -29,13 +36,11 @@ const AuthCode = () => {
         placeholder=""
         keyboardType="numeric"
       />
-        {/* <Text style={[styles.text3, styles.textPosition]}>0503000661</Text> */}
-        {/* <Text style={[styles.text4, styles.textTypo]}></Text> */}
       </View>
       <Image
         style={styles.headerIcon}
         resizeMode="cover"
-        source={require("../assets/logo.png")}
+        source={require("../assets/labelle.png")}
       />
       <Image
         style={styles.imgIcon}
@@ -164,11 +169,11 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   imgIcon: {
-    top: 486,
-    left: 0,
+    alignSelf: 'flex-end', // Align the image to the bottom
     width: 430,
     height: 348,
-    position: "absolute",
+    position: 'absolute',
+    bottom: 0, // Set bottom to 0 to position at the bottom
   },
   authCode: {
     flex: 1,
