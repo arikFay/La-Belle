@@ -1,0 +1,21 @@
+<svg width="210" height="265" viewBox="0 0 210 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1">
+<mask id="mask0_1342_720" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="10" y="0" width="190" height="251">
+<rect id="Rectangle 16" x="10.5" y="0.824341" width="189" height="249.59" rx="19.5" fill="url(#paint0_linear_1342_720)" stroke="white"/>
+</mask>
+<g mask="url(#mask0_1342_720)">
+<ellipse id="Ellipse 12" cx="62.7293" cy="197.142" rx="67.3473" ry="67.3461" fill="white" fill-opacity="0.4"/>
+<ellipse id="Ellipse 13" cx="170.276" cy="237.863" rx="55.8617" ry="55.8607" fill="white" fill-opacity="0.4"/>
+<ellipse id="Ellipse 14" cx="168.188" cy="126.141" rx="55.8617" ry="55.8607" fill="white" fill-opacity="0.4"/>
+<ellipse id="Ellipse 9" cx="52.2878" cy="90.6411" rx="36.023" ry="36.0223" fill="white" fill-opacity="0.3"/>
+<ellipse id="Ellipse 10" cx="80.4797" cy="90.6411" rx="36.023" ry="36.0223" fill="white" fill-opacity="0.3"/>
+<ellipse id="Ellipse 11" cx="111.804" cy="90.6411" rx="36.023" ry="36.0223" fill="white" fill-opacity="0.4"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1342_720" x1="105" y1="0.324341" x2="105" y2="250.914" gradientUnits="userSpaceOnUse">
+<stop stop-color="#DBE0E7"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
