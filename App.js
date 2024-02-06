@@ -1,54 +1,36 @@
-const Stack = createNativeStackNavigator();
 import * as React from "react";
+import 'react-native-gesture-handler';
 
 import { NavigationContainer } from "@react-navigation/native";
 
-import Tabs from './navigation/tabs';
+import AuthNavigator from "./navigations/AuthNavigator";
 
 import AuthCode from "./screens/AuthCode";
 import LoadingApp from "./screens/LoadingApp";
-import HomeScreen from "./screens/HomeScreen";
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import { Provider, useSelector } from "react-redux";
 import { store } from "./store";
 
 
-
 const App = () => {
-  const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
   const loading = useSelector((state) => state.auth.loading);
   const logging = useSelector((state) => state.auth.logging);
 
   const authState = () => {
     if (logging) {
       return (
-        <Tabs />
+        <AuthNavigator />
       )
     }
     else if (loading) {
       return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name="LoadingApp"
-            component={LoadingApp}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
+        <LoadingApp />
       )
     }
     else {
       return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name="AuthCode"
-            component={AuthCode}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
+        <AuthCode />
       )
-
     }
   };
 
@@ -56,7 +38,7 @@ const App = () => {
     <>
       <Provider store={store}>
         <NavigationContainer>
-          {authState()}
+            {authState()}
         </NavigationContainer>
       </Provider>
     </>

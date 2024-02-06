@@ -1,16 +1,18 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 
-
+import Header from './header';
 import HomeScreen from '../screens/HomeScreen';
 
 const Tab = createBottomTabNavigator();
 
+
 const CustomTabBarBytton = ({ children, onPress }) => (
     <TouchableOpacity
         style={{
-            top: -30,
+            top: -25,
             justifyContent: 'center',
             alignItems: 'center',
             ...styles.shadow
@@ -19,8 +21,8 @@ const CustomTabBarBytton = ({ children, onPress }) => (
     >
         <View
             style={{
-                width: 70,
-                height: 70,
+                width: 60,
+                height: 60,
                 borderRadius: 35,
                 backgroundColor: 'rgba(216, 123, 140, 1)'
             }}
@@ -30,11 +32,23 @@ const CustomTabBarBytton = ({ children, onPress }) => (
     </TouchableOpacity>
 );
 
-const Tabs = () => {
+const BottomTabNavigator = () => {
     return (
         <Tab.Navigator
             screenOptions={{
-                headerShown: false,
+                // headerShown: false,
+                header: ({ }) => (
+                  <View
+                  style={{
+                    flex: 1,
+                    position: 'absolute',
+                    height: 80,
+                    width: '100%',
+                  }}
+                  >
+                    <Header />
+                  </View>
+                ),
                 tabBarShowLabel: false,
                 tabBarStyle: {
                     position: 'absolute',
@@ -46,14 +60,15 @@ const Tabs = () => {
                     ...styles.shadow
                 }
             }}
+            initialRouteName="ראשי"
         >
-            <Tab.Screen name="ראשי" component={HomeScreen} options={{
+            <Tab.Screen name="התראות" component={HomeScreen} options={{
                 tabBarIcon: ({ focused }) => (
                     <View
                         style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}
                     >
                         <Image
-                            source={require('../assets/home.png')}
+                            source={require('../assets/bell.png')}
                             resizeMode='contain'
                             style={{
                                 width: 25,
@@ -67,7 +82,7 @@ const Tabs = () => {
                                 fontSize: 12
                             }}
                         >
-                            ראשי
+                            התראות
                         </Text>
                     </View>
                 )
@@ -104,8 +119,8 @@ const Tabs = () => {
                             source={require('../assets/shopping.png')}
                             resizeMode='contain'
                             style={{
-                                width: 30,
-                                height: 30,
+                                width: 25,
+                                height: 25,
                                 tintColor: '#fff'
                             }}
                         />
@@ -115,31 +130,6 @@ const Tabs = () => {
                     )
                 }}
             />
-            <Tab.Screen name="התראות" component={HomeScreen} options={{
-                tabBarIcon: ({ focused }) => (
-                    <View
-                        style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}
-                    >
-                        <Image
-                            source={require('../assets/bell.png')}
-                            resizeMode='contain'
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? '#e32f45' : '#748c94'
-                            }}
-                        />
-                        <Text
-                            style={{
-                                color: focused ? '#e32f45' : '#748c94',
-                                fontSize: 12
-                            }}
-                        >
-                            ראשי
-                        </Text>
-                    </View>
-                )
-            }} />
             <Tab.Screen name="הדרכות" component={HomeScreen} options={{
                 tabBarIcon: ({ focused }) => (
                     <View
@@ -165,11 +155,43 @@ const Tabs = () => {
                     </View>
                 )
             }} />
+            <Tab.Screen name="ראשי" component={HomeScreen} options={{
+                tabBarIcon: ({ focused }) => (
+                    <View
+                        style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}
+                    >
+                        <Image
+                            source={require('../assets/home.png')}
+                            resizeMode='contain'
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: focused ? '#e32f45' : '#748c94',
+                            }}
+                        />
+                        <Text
+                            style={{
+                                color: focused ? '#e32f45' : '#748c94',
+                                fontSize: 12
+                            }}
+                        >
+                            ראשי
+                        </Text>
+                    </View>
+                )
+            }} />
         </Tab.Navigator>
     )
 }
 
 const styles = StyleSheet.create({
+    iphone14Screen: {
+        backgroundColor: "#f0f1f3",
+        flex: 1,
+        width: "100%",
+        height: 1979,
+        overflow: "hidden",
+    },
     shadow: {
         shadowColor: '#7F5DF0',
         shadowOffset: {
@@ -183,4 +205,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Tabs;
+export default BottomTabNavigator;
